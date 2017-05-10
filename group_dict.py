@@ -1,39 +1,39 @@
-def agrupar_dict(self, agrupar_por='', lista_dict=[], filtro=[]):
+def group_dict(self, group_by='', dict_list=[], filter_keys=[]):
         """
-        Agrupar dados de um dicionario.
+        Group the data from a dict.
 
-        Essa funcao recebe um string com a chave que sera usada como
-        parametro para agrupar os dados, uma lista de dicionarios que seram
-        agrupados e uma lista de chaves que serao mantidas nos dicionarios
-        finais. Caso nao seja passado nenhum item em filtro, ele mantem o
-        dicionario original.
+        This method receives a string representing the Dict Key it's going to
+        be used to group the data, the list of Dicts you want to work on and
+        the list of Keys you want to keep after grouping everything.
+        The param 'filter_keys' is optional, if you don't inform any key,
+        it's going to keep the original Dict.
         """
-        if not isinstance(agrupar_por, str) or len(agrupar_por) == 0:
+        if not isinstance(group_by, str) or len(group_by) == 0:
             return 0
 
-        if not isinstance(lista_dict, list) or len(lista_dict) == 0:
+        if not isinstance(dict_list, list) or len(dict_list) == 0:
             return 0
         else:
-            for i in lista_dict:
+            for i in dict_list:
                 if not isinstance(i, dict) or len(i.keys()) == 0:
                     return 0
 
-        if not isinstance(filtro, list):
+        if not isinstance(filter_keys, list):
             return 0
         else:
-            for idx, i in enumerate(filtro):
+            for idx, i in enumerate(filter_keys):
                 if not isinstance(i, str) or len(i) == 0:
-                    del filtro[idx]
+                    del filter_keys[idx]
 
         return {
             str(i): map(
-                lambda y: len(filtro) > 0 and {
-                    key: y[key] for key in filtro if key in y.keys()
-                } or y, filter(lambda x: x[agrupar_por] == i, lista_dict)
+                lambda y: len(filter_keys) > 0 and {
+                    key: y[key] for key in filter_keys if key in y.keys()
+                } or y, filter(lambda x: x[group_by] == i, dict_list)
             ) for i in list(
                 set(
                     map(
-                        lambda x: x[agrupar_por], lista_dict
+                        lambda x: x[group_by], dict_list
                     )
                 )
             )
