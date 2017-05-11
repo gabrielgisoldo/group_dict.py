@@ -26,7 +26,7 @@ def group_dict(self, group_by='', dict_list=[], filter_keys=[]):
                     del filter_keys[idx]
 
         return {
-            str(i): map(
+            i: map(
                 lambda y: len(filter_keys) > 0 and {
                     key: y[key] for key in filter_keys if key in y.keys()
                 } or y, filter(lambda x: x[group_by] == i, dict_list)
