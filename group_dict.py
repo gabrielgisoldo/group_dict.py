@@ -20,10 +20,6 @@ def group_dict(self, group_by='', dict_list=[], filter_keys=[]):
 
         if not isinstance(filter_keys, list):
             return 0
-        else:
-            for idx, i in enumerate(filter_keys):
-                if not isinstance(i, str) or len(i) == 0:
-                    del filter_keys[idx]
 
         return {
             i: map(
