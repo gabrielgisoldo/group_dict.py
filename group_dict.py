@@ -11,8 +11,8 @@ def group_dict(self, group_by='', dict_list=[], filter_keys=[]):
         if not group_by:
             return "No key to group by informed."
 
-        if not isinstance(dict_list, list) or len(dict_list) == 0:
-            return "dict_list should be an list."
+        if not isinstance(dict_list, [list, tuple]) or len(dict_list) == 0:
+            return "dict_list should be a valid list/tuple."
         else:
             for i in dict_list:
                 if not isinstance(i, dict) or len(i.keys()) == 0:
