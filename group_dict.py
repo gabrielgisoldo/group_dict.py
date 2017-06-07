@@ -18,7 +18,7 @@ def group_dict(self, group_by='', dict_list=[], filter_keys=[]):
                 if not isinstance(i, dict) or len(i.keys()) == 0:
                     return "Every item inside the list(dict_list) should be a valid Dict."
 
-        if not isinstance(filter_keys, list):
+        if not isinstance(filter_keys, [list, tuple]):
             return 0
 
             return {
